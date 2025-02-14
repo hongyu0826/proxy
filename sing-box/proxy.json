@@ -1,0 +1,17 @@
+{
+  "version": 3,
+  "rules": [
+    {
+      "domain": [
+        "ubits.club",
+        "hdfans.org"
+      ]
+    },
+    {
+      "domain_keyword": [
+        "docker",
+        "sehuatang"
+      ]
+    }
+  ]
+}
