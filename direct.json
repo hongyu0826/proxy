@@ -1,0 +1,21 @@
+{
+  "version": 3，
+  "rules": [
+    {
+      "port_range": [
+        "1:79"，
+        "81:442"，
+        "444:65535"
+      ]
+    }，
+    {
+      "domain": [
+        "avatars.githubusercontent.com"
+      ]，
+      "domain_keyword": [
+        "yirui"，
+		"m-team"
+      ]
+    }
+  ]
+}
