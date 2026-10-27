@@ -1,6 +1,6 @@
 const main = (config) => {
   // 过滤 无用节点
-  const filterKeywords = ["直连", "剩余流量", "距离下次重置", "套餐到期", "1元100G"];
+  const filterKeywords = ["剩余流量", "距离下次重置", "套餐到期", "1元100G"];
   if (Array.isArray(config.proxies)) {
     config.proxies = config.proxies.filter(proxy => {
       const name = proxy.name ?? "";
@@ -21,18 +21,18 @@ const main = (config) => {
       "include-all": true,
       tolerance: 20,
       interval: 300,
-      filter: "^((?!(直连|剩余流量|距离下次重置|套餐到期|1元100G)).)*$"
+      filter: "^((?!(DIRECT)).)*$"
     },
     {
       name: "🌐 手动选择",
       type: "select",
       "include-all": true,
-      filter: "^((?!(直连|剩余流量|距离下次重置|套餐到期|1元100G)).)*$"
+      filter: "^((?!(DIRECT)).)*$"
     },
     {
       name: "🐟 漏网之鱼",
       type: "select",
-      proxies: ["DIRECT", "🚀 默认代理"]
+      proxies: [ "🚀 默认代理","DIRECT"]
     }
   ];
 
