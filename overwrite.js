@@ -38,6 +38,8 @@ const main = (config) => {
 
   // 规则列表
   config.rules = [
+    "DOMAIN-KEYWORD,qiuhy,DIRECT",
+    
     "RULE-SET,private_domain,DIRECT",
     "RULE-SET,apple_domain,DIRECT",
     "RULE-SET,microsoft_domain,DIRECT",
