@@ -1,6 +1,6 @@
 const main = (config) => {
   // 过滤 无用节点
-  const filterKeywords = ["剩余流量", "距离下次重置", "套餐到期", "1元100G"];
+  const filterKeywords = ["剩余流量", "距离下次重置", "套餐到期", "元100G"];
   if (Array.isArray(config.proxies)) {
     config.proxies = config.proxies.filter(proxy => {
       const name = proxy.name ?? "";
