@@ -42,7 +42,7 @@ const main = (config) => {
   ];
 
   config.rules = [
-    // ========== 【升级广告：双广告规则集叠加，国内广告优先】 ==========
+    // ========== 广告规则（修复：AWAvenue改用yaml，不再用mrs） ==========
     "RULE-SET,ads_all,🛑 广告拦截",
     "RULE-SET,awareness_ads,🛑 广告拦截",
 
@@ -120,13 +120,13 @@ const main = (config) => {
       format: "mrs",
       url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ads-all.mrs"
     },
-    // 新增：AWAvenue 国内广告规则，专门针对穿山甲、优量汇、百青藤等国内广告联盟
+    // 修复重点：AWAvenue 改用 yaml 格式，不再用 mrs，解决256:16解析报错
     awareness_ads: {
       type: "http",
       interval: 86400,
       behavior: "domain",
-      format: "mrs",
-      url: "https://raw.githubusercontent.com/AWAvenue/AdRules/main/mrs/AWAvenue-Ads-Rule.mrs"
+      format: "yaml",
+      url: "https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Domain.yaml"
     },
     private_domain: {
       type: "http",
