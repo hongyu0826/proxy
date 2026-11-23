@@ -42,17 +42,11 @@ const main = (config) => {
   ];
 
   config.rules = [
-    // ========== 广告规则（修复：AWAvenue改用yaml，不再用mrs） ==========
     "RULE-SET,ads_all,🛑 广告拦截",
-    "RULE-SET,awareness_ads,🛑 广告拦截",
-
-    // 2.内网私有域名直连
     "RULE-SET,private_domain,DIRECT",
-
-    // 3.自定义直连
     "DOMAIN-KEYWORD,qiuhy,DIRECT",
 
-    // ========== 【安卓GMS/Play/FCM推送 核心硬兜底｜重中之重】 ==========
+    // ========== 安卓GMS / Play / FCM 推送核心硬兜底 ==========
     "DOMAIN-SUFFIX,mtalk.google.com,🚀 默认代理",
     "DOMAIN-SUFFIX,alt1-mtalk.google.com,🚀 默认代理",
     "DOMAIN-SUFFIX,alt2-mtalk.google.com,🚀 默认代理",
@@ -79,7 +73,7 @@ const main = (config) => {
     "DOMAIN-SUFFIX,dl.google.com,🚀 默认代理",
     "DOMAIN-SUFFIX,ggpht.com,🚀 默认代理",
 
-    // ========== GitHub全套兜底（网页、release、ghcr、静态资源） ==========
+    // ========== GitHub 兜底 ==========
     "DOMAIN-KEYWORD,github,🚀 默认代理",
     "DOMAIN-SUFFIX,github.com,🚀 默认代理",
     "DOMAIN-SUFFIX,githubusercontent.com,🚀 默认代理",
@@ -88,13 +82,11 @@ const main = (config) => {
     "DOMAIN-SUFFIX,ghcr.io,🚀 默认代理",
     "DOMAIN-SUFFIX,github.dev,🚀 默认代理",
 
-    // 4.国内服务直连
     "RULE-SET,apple_domain,DIRECT",
     "RULE-SET,microsoft_domain,DIRECT",
     "RULE-SET,cn_domain,DIRECT",
     "RULE-SET,cn_ip,DIRECT,no-resolve",
 
-    // 5.保留的主流海外App规则集
     "RULE-SET,github_domain,🚀 默认代理",
     "RULE-SET,youtube_domain,🚀 默认代理",
     "RULE-SET,telegram_domain,🚀 默认代理",
@@ -108,7 +100,6 @@ const main = (config) => {
     "RULE-SET,steam_domain,🚀 默认代理",
     "RULE-SET,geolocation-!cn,🚀 默认代理",
 
-    // 兜底
     "MATCH,🐟 漏网之鱼"
   ];
 
@@ -119,14 +110,6 @@ const main = (config) => {
       behavior: "domain",
       format: "mrs",
       url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ads-all.mrs"
-    },
-    // 修复重点：AWAvenue 改用 yaml 格式，不再用 mrs，解决256:16解析报错
-    awareness_ads: {
-      type: "http",
-      interval: 86400,
-      behavior: "domain",
-      format: "yaml",
-      url: "https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Domain.yaml"
     },
     private_domain: {
       type: "http",
@@ -249,7 +232,6 @@ const main = (config) => {
     }
   };
 
-  // DNS 配套（redir-host，适配GMS推送）
   config.dns = {
     enable: true,
     ipv6: false,
