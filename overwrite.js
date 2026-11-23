@@ -39,6 +39,7 @@ const main = (config) => {
   // 规则列表
   config.rules = [
     "DOMAIN-KEYWORD,qiuhy,DIRECT",
+    "DOMAIN-KEYWORD,github,🚀 默认代理",
     
     "RULE-SET,private_domain,DIRECT",
     "RULE-SET,apple_domain,DIRECT",
