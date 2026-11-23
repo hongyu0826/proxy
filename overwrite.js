@@ -232,24 +232,5 @@ const main = (config) => {
     }
   };
 
-  config.dns = {
-    enable: true,
-    ipv6: false,
-    enhanced-mode: "redir-host",
-    default-nameserver: ["223.5.5.5", "119.29.29.29"],
-    nameserver: [
-      "https://223.5.5.5/dns-query",
-      "https://doh.pub/dns-query"
-    ],
-    fallback: [
-      "https://1.1.1.1/dns-query",
-      "https://8.8.8.8/dns-query"
-    ],
-    fallback-filter: {
-      geoip: true,
-      geoip-code: "CN"
-    }
-  };
-
   return config;
 };
