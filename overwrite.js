@@ -11,11 +11,6 @@ const main = (config) => {
   // 代理组
   config['proxy-groups'] = [
     {
-      name: "🛑 广告拦截",
-      type: "select",
-      proxies: ["REJECT", "DIRECT"]
-    },
-    {
       name: "🚀 默认代理",
       type: "select",
       proxies: ["♻️ 自动选择", "🌐 手动选择", "DIRECT"]
@@ -42,11 +37,11 @@ const main = (config) => {
   ];
 
   config.rules = [
-    "RULE-SET,ads_all,🛑 广告拦截",
+    "RULE-SET,ads_all,REJECT",
     "RULE-SET,private_domain,DIRECT",
     "DOMAIN-KEYWORD,qiuhy,DIRECT",
 
-    // ========== 安卓GMS / Play / FCM 推送核心硬兜底 ==========
+    // ========== 安卓GMS / Play / FCM 推送 ==========
     "DOMAIN-SUFFIX,mtalk.google.com,🚀 默认代理",
     "DOMAIN-SUFFIX,alt1-mtalk.google.com,🚀 默认代理",
     "DOMAIN-SUFFIX,alt2-mtalk.google.com,🚀 默认代理",
@@ -73,7 +68,7 @@ const main = (config) => {
     "DOMAIN-SUFFIX,dl.google.com,🚀 默认代理",
     "DOMAIN-SUFFIX,ggpht.com,🚀 默认代理",
 
-    // ========== GitHub 兜底 ==========
+    // ========== GitHub ==========
     "DOMAIN-KEYWORD,github,🚀 默认代理",
     "DOMAIN-SUFFIX,github.com,🚀 默认代理",
     "DOMAIN-SUFFIX,githubusercontent.com,🚀 默认代理",
@@ -91,13 +86,10 @@ const main = (config) => {
     "RULE-SET,youtube_domain,🚀 默认代理",
     "RULE-SET,telegram_domain,🚀 默认代理",
     "RULE-SET,telegram_ip,🚀 默认代理,no-resolve",
-    "RULE-SET,twitter_domain,🚀 默认代理",
     "RULE-SET,ai,🚀 默认代理",
     "RULE-SET,google_domain,🚀 默认代理",
     "RULE-SET,google_ip,🚀 默认代理,no-resolve",
     "RULE-SET,gfw_domain,🚀 默认代理",
-    "RULE-SET,tiktok_domain,🚀 默认代理",
-    "RULE-SET,steam_domain,🚀 默认代理",
     "RULE-SET,geolocation-!cn,🚀 默认代理",
 
     "MATCH,🐟 漏网之鱼"
@@ -131,27 +123,6 @@ const main = (config) => {
       behavior: "domain",
       format: "mrs",
       url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"
-    },
-    tiktok_domain: {
-      type: "http",
-      interval: 86400,
-      behavior: "domain",
-      format: "mrs",
-      url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok.mrs"
-    },
-    steam_domain: {
-      type: "http",
-      interval: 86400,
-      behavior: "domain",
-      format: "mrs",
-      url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/steam.mrs"
-    },
-    twitter_domain: {
-      type: "http",
-      interval: 86400,
-      behavior: "domain",
-      format: "mrs",
-      url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/twitter.mrs"
     },
     google_domain: {
       type: "http",
