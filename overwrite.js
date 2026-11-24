@@ -21,13 +21,13 @@ const main = (config) => {
       "include-all": true,
       tolerance: 20,
       interval: 300,
-      filter: "^((?!(DIRECT|REJECT)).)*$"
+      filter: "^((?!(DIRECT)).)*$"
     },
     {
       name: "🌐 手动选择",
       type: "select",
       "include-all": true,
-      filter: "^((?!(DIRECT|REJECT)).)*$"
+      filter: "^((?!(DIRECT)).)*$"
     },
     {
       name: "🐟 漏网之鱼",
@@ -41,7 +41,7 @@ const main = (config) => {
     "RULE-SET,private_domain,DIRECT",
     "DOMAIN-KEYWORD,qiuhy,DIRECT",
 
-    // ========== 安卓GMS / Play / FCM 推送 ==========
+    // ========== 安卓GMS / Play / FCM 推送硬规则 ==========
     "DOMAIN-SUFFIX,mtalk.google.com,🚀 默认代理",
     "DOMAIN-SUFFIX,alt1-mtalk.google.com,🚀 默认代理",
     "DOMAIN-SUFFIX,alt2-mtalk.google.com,🚀 默认代理",
@@ -68,7 +68,7 @@ const main = (config) => {
     "DOMAIN-SUFFIX,dl.google.com,🚀 默认代理",
     "DOMAIN-SUFFIX,ggpht.com,🚀 默认代理",
 
-    // ========== GitHub ==========
+    // ========== GitHub 硬兜底 ==========
     "DOMAIN-KEYWORD,github,🚀 默认代理",
     "DOMAIN-SUFFIX,github.com,🚀 默认代理",
     "DOMAIN-SUFFIX,githubusercontent.com,🚀 默认代理",
@@ -77,11 +77,13 @@ const main = (config) => {
     "DOMAIN-SUFFIX,ghcr.io,🚀 默认代理",
     "DOMAIN-SUFFIX,github.dev,🚀 默认代理",
 
+    // 国内域名直连
     "RULE-SET,apple_domain,DIRECT",
     "RULE-SET,microsoft_domain,DIRECT",
     "RULE-SET,cn_domain,DIRECT",
     "RULE-SET,cn_ip,DIRECT,no-resolve",
 
+    // 海外服务规则集
     "RULE-SET,github_domain,🚀 默认代理",
     "RULE-SET,youtube_domain,🚀 默认代理",
     "RULE-SET,telegram_domain,🚀 默认代理",
@@ -90,7 +92,6 @@ const main = (config) => {
     "RULE-SET,google_domain,🚀 默认代理",
     "RULE-SET,google_ip,🚀 默认代理,no-resolve",
     "RULE-SET,gfw_domain,🚀 默认代理",
-    "RULE-SET,geolocation-!cn,🚀 默认代理",
 
     "MATCH,🐟 漏网之鱼"
   ];
@@ -200,6 +201,25 @@ const main = (config) => {
       behavior: "ipcidr",
       format: "mrs",
       url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.mrs"
+    }
+  };
+
+  config.dns = {
+    enable: true,
+    ipv6: false,
+    "enhanced-mode": "redir-host",
+    "default-nameserver": ["223.5.5.5", "119.29.29.29"],
+    nameserver: [
+      "https://223.5.5.5/dns-query",
+      "https://doh.pub/dns-query"
+    ],
+    fallback: [
+      "https://1.1.1.1/dns-query",
+      "https://8.8.8.8/dns-query"
+    ],
+    "fallback-filter": {
+      geoip: true,
+      "geoip-code": "CN"
     }
   };
 
